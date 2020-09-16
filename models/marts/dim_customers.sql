@@ -1,11 +1,11 @@
 with customers as (
     select * 
-    from {{ ref('stg_customers') }}
+    from {{ ref('stg_jaffle_shop__customers') }}
 )
 
 , orders as (
     select * 
-    from {{ ref('orders') }}
+    from {{ ref('fct_orders') }}
 )
 
 , customer_orders as (
@@ -35,4 +35,13 @@ with customers as (
     left join customer_orders using (customer_id)
 )
 
-select * from final
+select 
+    customer_id
+  , first_name
+  , last_name
+  , first_order_date
+  , most_recent_order_date
+  , number_of_orders
+  , lifetime_value
+
+from final

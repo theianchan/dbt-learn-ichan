@@ -1,11 +1,11 @@
 with orders as (
     select *
-    from {{ ref('stg_orders') }}
+    from {{ ref('stg_jaffle_shop__orders') }}
 )
 
 , payment as (
     select *
-    from {{ ref('stg_payment') }}
+    from {{ ref('stg_stripe__payment') }}
 )
 
 select

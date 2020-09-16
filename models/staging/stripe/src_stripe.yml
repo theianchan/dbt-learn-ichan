@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: raw
+    tables:
+      - name: payment
+        description: Payment data. Grain is payments.
+        columns: 
+          - name: id
+            description: Primary key.
+            tests:
+              - unique
+              - not_null
